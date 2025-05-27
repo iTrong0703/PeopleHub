@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PeopleHub.Application.Common.Models;
 using PeopleHub.Application.Features.Users.DTOs;

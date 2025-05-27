@@ -1,0 +1,11 @@
+<h1>Welcome to {{ title }}</h1>
+<p>Congratulations! Your app is running. 🎉</p>
+
+<ul>
+  @for (user of users.items; track user.id) {
+    <li>{{ user.id }} - {{ user.userName }}</li>
+  }
+  <li *ngFor="let user of users.items">
+    {{ user.id }} - {{ user.userName }}
+  </li>
+</ul>
