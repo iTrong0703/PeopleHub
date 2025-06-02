@@ -12,7 +12,7 @@ using PeopleHub.Infrastructure.Data;
 namespace PeopleHub.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250525184757_InitialCreate")]
+    [Migration("20250531085458_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -36,12 +36,16 @@ namespace PeopleHub.Infrastructure.Data.Migrations
                     b.Property<DateTimeOffset>("Created")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.Property<DateTimeOffset?>("LastModified")
                         .HasColumnType("timestamp with time zone");
+
+                    b.Property<byte[]>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("bytea");
+
+                    b.Property<byte[]>("PasswordSalt")
+                        .IsRequired()
+                        .HasColumnType("bytea");
 
                     b.Property<string>("UserName")
                         .IsRequired()

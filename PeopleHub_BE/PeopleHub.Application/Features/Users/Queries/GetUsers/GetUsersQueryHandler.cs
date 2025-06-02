@@ -1,12 +1,6 @@
-﻿using MediatR;
-using PeopleHub.Application.Common.Models;
+﻿using PeopleHub.Application.Common.Models;
 using PeopleHub.Application.Features.Users.DTOs;
 using PeopleHub.Application.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PeopleHub.Application.Features.Users.Queries.GetUsers
 {
@@ -29,7 +23,7 @@ namespace PeopleHub.Application.Features.Users.Queries.GetUsers
                 SortDescending = request.SortDescending
             };
             var pagedUsers = await _unitOfWork.Users.GetUsersAsync(paginationParams, cancellationToken);
-            var userDtos = pagedUsers.Items.Select(u => new UserResponseDto(u.Id, u.Email, u.UserName)).ToList();
+            var userDtos = pagedUsers.Items.Select(u => new UserResponseDto(u.Id, u.UserName)).ToList();
             return new PagedResult<UserResponseDto>(userDtos, pagedUsers.TotalCount, pagedUsers.PageNumber, pagedUsers.PageSize);
         }
     }

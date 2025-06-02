@@ -33,12 +33,16 @@ namespace PeopleHub.Infrastructure.Data.Migrations
                     b.Property<DateTimeOffset>("Created")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.Property<DateTimeOffset?>("LastModified")
                         .HasColumnType("timestamp with time zone");
+
+                    b.Property<byte[]>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("bytea");
+
+                    b.Property<byte[]>("PasswordSalt")
+                        .IsRequired()
+                        .HasColumnType("bytea");
 
                     b.Property<string>("UserName")
                         .IsRequired()

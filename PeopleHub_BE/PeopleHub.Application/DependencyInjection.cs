@@ -1,10 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using MediatR;
+using FluentValidation;
+using Microsoft.Extensions.DependencyInjection;
+using PeopleHub.Application.Common.Behaviors;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 
 namespace PeopleHub.Application
@@ -13,7 +11,11 @@ namespace PeopleHub.Application
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
-            services.AddMediatR(options => options.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
+            services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+            services.AddMediatR(options => {
+                options.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly());
+                options.AddBehavior(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+            });
             return services;
         }
     }

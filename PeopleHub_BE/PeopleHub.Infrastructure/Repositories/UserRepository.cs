@@ -1,17 +1,11 @@
-﻿using MediatR;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using PeopleHub.Application.Common.Models;
 using PeopleHub.Application.Features.Users.DTOs;
-using PeopleHub.Application.Interfaces;
 using PeopleHub.Application.Interfaces.Repositories;
 using PeopleHub.Domain.Entities;
 using PeopleHub.Infrastructure.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace PeopleHub.Infrastructure.Repositories
 {
@@ -23,6 +17,24 @@ namespace PeopleHub.Infrastructure.Repositories
         {
             _context = context;
         }
+
+        public async Task<AppUser> CreateUserAsync(CreateUserRequestDto request, CancellationToken cancellationToken)
+        {
+            var user = new AppUser
+            {
+                UserName = request.Username.ToLower(),
+                PasswordHash = request.PasswordHash,
+                PasswordSalt = request.PasswordSalt
+            };
+            await _context.Users.AddAsync(user, cancellationToken);
+            return user;
+        }
+
+        public async Task<AppUser> FindByUsernameAsync(string username, CancellationToken cancellationToken)
+        {
+            return await _context.Users.FirstOrDefaultAsync(u => u.UserName.ToLower() == username.ToLower(), cancellationToken);
+        }
+
         public async Task<PagedResult<AppUser>> GetUsersAsync(PaginationParams paginationParams, CancellationToken cancellationToken)
         {
             var query = _context.Users.AsNoTracking().OrderBy(u => u.Id);

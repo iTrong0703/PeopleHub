@@ -11,13 +11,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Common\Exceptions\" />
     <Folder Include="Common\Mappings\" />
-    <Folder Include="Features\Users\Commands\" />
     <Folder Include="Features\Users\Queries\GetUserById\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" />
     <PackageReference Include="MediatR" />
   </ItemGroup>
 

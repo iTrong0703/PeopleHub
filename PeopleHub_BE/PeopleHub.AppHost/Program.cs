@@ -1,3 +1,4 @@
+using PeopleHub.AppHost.Middlewares;
 using PeopleHub.Application;
 using PeopleHub.Infrastructure;
 
@@ -9,7 +10,6 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
 
 builder.Services.AddInfrastructureServices(builder.Configuration);
 builder.Services.AddApplicationServices();
@@ -28,6 +28,8 @@ if (app.Environment.IsDevelopment())
 app.UseCors(x => x.AllowAnyHeader()
                     .AllowAnyMethod()
                     .WithOrigins("https://localhost:4200", "http://localhost:4200"));
+
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 app.UseHttpsRedirection();
 

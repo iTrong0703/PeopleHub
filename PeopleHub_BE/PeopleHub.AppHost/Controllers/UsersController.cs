@@ -6,9 +6,7 @@ using PeopleHub.Application.Features.Users.Queries.GetUsers;
 
 namespace PeopleHub.AppHost.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class UsersController(IMediator mediator) : ControllerBase
+    public class UsersController(IMediator mediator) : BaseApiController
     {
         private readonly IMediator _mediator = mediator;
 

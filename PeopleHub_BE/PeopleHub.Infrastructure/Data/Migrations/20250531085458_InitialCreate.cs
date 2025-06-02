@@ -19,7 +19,8 @@ namespace PeopleHub.Infrastructure.Data.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     UserName = table.Column<string>(type: "text", nullable: false),
-                    Email = table.Column<string>(type: "text", nullable: false),
+                    PasswordHash = table.Column<byte[]>(type: "bytea", nullable: false),
+                    PasswordSalt = table.Column<byte[]>(type: "bytea", nullable: false),
                     Created = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
                     LastModified = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true)
                 },

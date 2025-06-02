@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using PeopleHub.Application.Interfaces;
 using PeopleHub.Application.Interfaces.Repositories;
 using PeopleHub.Domain.Common;
@@ -31,11 +30,6 @@ namespace PeopleHub.Infrastructure.Repositories
 
             foreach (var entry in entries)
             {
-                if (entry.State == EntityState.Added)
-                {
-                    entry.Entity.Created = DateTimeOffset.UtcNow;
-                }
-
                 if (entry.State == EntityState.Modified)
                 {
                     entry.Entity.LastModified = DateTimeOffset.UtcNow;

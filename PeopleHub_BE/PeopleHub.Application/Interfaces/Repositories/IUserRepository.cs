@@ -1,4 +1,5 @@
 ﻿using PeopleHub.Application.Common.Models;
+using PeopleHub.Application.Features.Users.DTOs;
 using PeopleHub.Application.Interfaces;
 using PeopleHub.Application.Interfaces.Repositories;
 using PeopleHub.Domain.Entities;
@@ -13,5 +14,7 @@ namespace PeopleHub.Application.Interfaces.Repositories
     public interface IUserRepository
     {
         Task<PagedResult<AppUser>> GetUsersAsync(PaginationParams paginationParams, CancellationToken cancellationToken);
+        Task<AppUser> CreateUserAsync(CreateUserRequestDto request, CancellationToken cancellationToken);
+        Task<AppUser> FindByUsernameAsync(string username, CancellationToken cancellationToken);
     }
 }
