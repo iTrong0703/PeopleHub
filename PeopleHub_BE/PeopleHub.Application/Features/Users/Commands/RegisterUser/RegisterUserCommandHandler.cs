@@ -1,6 +1,7 @@
 ﻿using FluentValidation.Results;
 using PeopleHub.Application.Features.Users.DTOs;
 using PeopleHub.Application.Interfaces;
+using PeopleHub.Application.Interfaces.Services;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -8,15 +9,17 @@ using ValidationException = PeopleHub.Application.Common.Exceptions.ValidationEx
 
 namespace PeopleHub.Application.Features.Users.Commands.RegisterUser
 {
-    public class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand, UserResponseDto>
+    public class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand, UserRegisterResponseDto>
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly ITokenService _tokenService;
 
-        public RegisterUserCommandHandler(IUnitOfWork unitOfWork)
+        public RegisterUserCommandHandler(IUnitOfWork unitOfWork, ITokenService tokenService)
         {
             _unitOfWork = unitOfWork;
+            _tokenService = tokenService;
         }
-        public async Task<UserResponseDto> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
+        public async Task<UserRegisterResponseDto> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
         {
             var existingUser = await _unitOfWork.Users.FindByUsernameAsync(request.Username, cancellationToken);
             if (existingUser != null) 
@@ -39,7 +42,9 @@ namespace PeopleHub.Application.Features.Users.Commands.RegisterUser
 
             var createdUser = await _unitOfWork.Users.CreateUserAsync(user, cancellationToken);
             await _unitOfWork.SaveChangesAsync();
-            return new UserResponseDto(createdUser.Id, createdUser.UserName);
+
+            var token = _tokenService.CreateToken(createdUser);
+            return new UserRegisterResponseDto(createdUser.UserName, token);
         }
     }
 }

@@ -23,7 +23,7 @@ namespace PeopleHub.Application.Features.Users.Queries.GetUsers
                 SortDescending = request.SortDescending
             };
             var pagedUsers = await _unitOfWork.Users.GetUsersAsync(paginationParams, cancellationToken);
-            var userDtos = pagedUsers.Items.Select(u => new UserResponseDto(u.Id, u.UserName)).ToList();
+            var userDtos = pagedUsers.Items.Select(u => new UserResponseDto(u.UserName)).ToList();
             return new PagedResult<UserResponseDto>(userDtos, pagedUsers.TotalCount, pagedUsers.PageNumber, pagedUsers.PageSize);
         }
     }

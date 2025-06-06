@@ -32,7 +32,7 @@ namespace PeopleHub.Infrastructure.Repositories
 
         public async Task<AppUser> FindByUsernameAsync(string username, CancellationToken cancellationToken)
         {
-            return await _context.Users.FirstOrDefaultAsync(u => u.UserName.ToLower() == username.ToLower(), cancellationToken);
+            return await _context.Users.FirstOrDefaultAsync(u => u.UserName == username.ToLower(), cancellationToken);
         }
 
         public async Task<PagedResult<AppUser>> GetUsersAsync(PaginationParams paginationParams, CancellationToken cancellationToken)

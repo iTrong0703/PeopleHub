@@ -45,6 +45,11 @@ namespace PeopleHub.AppHost.Middlewares
                         problem.Extensions[error.Key] = error.Value;
                     }
                     break;
+                case UnauthorizedAccessException unauthorizedException:
+                    problem.Status = (int)HttpStatusCode.Unauthorized;
+                    problem.Title = "Unauthorized";
+                    problem.Detail = unauthorizedException.Message;
+                    break;
                 //case NotFoundException notFoundException:
                 //    problem.Status = (int)HttpStatusCode.NotFound;
                 //    problem.Title = "Not Found";

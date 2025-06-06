@@ -11,5 +11,7 @@ namespace PeopleHub.Infrastructure.Data
     public class AppDbContext(DbContextOptions options) : DbContext(options)
     {
         public DbSet<AppUser> Users { get; set; }
+
+        // thêm unique cho username để tìm cho nhanh
     }
 }
