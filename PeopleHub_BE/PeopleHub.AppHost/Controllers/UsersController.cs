@@ -13,7 +13,7 @@ namespace PeopleHub.AppHost.Controllers
         private readonly IMediator _mediator = mediator;
         // Get users by page
         // GET: {{localhost}}/api/users
-        [Authorize]
+        [AllowAnonymous]
         [HttpGet]
         public async Task<ActionResult<PagedResult<UserResponseDto>>> GetUsers(
             [FromQuery] GetUsersQuery query,

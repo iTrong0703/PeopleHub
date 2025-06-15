@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-lg bg-light border-bottom shadow-sm">
+  <div class="container">
+    <a class="navbar-brand fw-bold text-primary" routerLink="/">PeopleHub</a>
+
+    <!-- mobile menu button -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      @if (authService.currentUser()) {
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/colleagues" routerLinkActive="active">
+              <i class="fas fa-users me-1"></i> Colleagues
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/connections" routerLinkActive="active">
+              <i class="fas fa-layer-group me-1"></i> Connections
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/messages" routerLinkActive="active">
+              <i class="fas fa-comments me-1"></i> Messages
+            </a>
+          </li>
+          <li dropdown class="nav-item dropdown">
+            <a dropdownToggle class="nav-link dropdown-toggle show" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+              Welcome, {{ authService.currentUser()?.username | titlecase }}!
+            </a>
+            <div *dropdownMenu class="dropdown-menu show" data-bs-popper="static">
+              <a class="dropdown-item" routerLink="/edit-profile">Edit profile</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" (click)="logout()">Logout</a>
+            </div>
+          </li>
+        </ul>
+      } @else {
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+              <a class="nav-link" routerLink="/test-errors" routerLinkActive="active">
+                TestErrors
+              </a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-primary" routerLink="/login">Login</a>
+          </li>
+        </ul>
+
+      }
+    </div>
+  </div>
+</nav>

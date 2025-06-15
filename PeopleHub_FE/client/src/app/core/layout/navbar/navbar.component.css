@@ -1,0 +1,42 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Navbar Brand */
+.navbar-brand {
+  font-size: 1.5rem;
+  letter-spacing: 0.5px;
+  color: #a2e436 !important; /* Brite primary */
+}
+
+/* Navbar link styling */
+.nav-link {
+  color: #212529;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #a2e436; /* Brite primary */
+  text-decoration: underline;
+}
+
+/* Login Button override */
+.btn-primary {
+  background-color: #a2e436;
+  border-color: #a2e436;
+  color: #212529;
+}
+
+.btn-primary:hover {
+  background-color: #94d82d;
+  border-color: #94d82d;
+}
+
+.navbar .dropdown-menu {
+  left: auto !important;
+  right: 0 !important;
+}
+
+

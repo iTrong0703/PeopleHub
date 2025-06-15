@@ -1,0 +1,65 @@
+<div class="auth-form-container">
+  <h2 class="text-center mb-4">Create a PeopleHub Account</h2>
+
+  <form #registerForm="ngForm" (ngSubmit)="onRegister(registerForm)">
+    <div class="mb-3">
+      <label for="username" class="form-label">Username</label>
+      <input
+        type="text"
+        id="username"
+        name="username"
+        class="form-control"
+        required
+        [(ngModel)]="registerData.username"
+        placeholder="Choose a username"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        class="form-control"
+        [class.is-invalid]="passwordMismatch"
+        required
+        [(ngModel)]="registerData.password"
+        placeholder="Enter a password"
+        (focus)="onFocus()"
+      />
+      @if (passwordMismatch) {
+        <div class="text-danger">
+          Passwords do not match.
+        </div>
+      }
+    </div>
+
+    <div class="mb-3">
+      <label for="confirmPassword" class="form-label">Confirm Password</label>
+      <input
+        type="password"
+        id="confirmPassword"
+        name="confirmPassword"
+        class="form-control"
+        [class.is-invalid]="passwordMismatch"
+        required
+        [(ngModel)]="registerData.confirmPassword"
+        placeholder="Re-enter your password"
+        (focus)="onFocus()"
+      />
+      @if (passwordMismatch) {
+        <div class="text-danger">
+          Passwords do not match.
+        </div>
+      }
+    </div>
+
+    <div class="d-flex justify-content-between mt-4">
+      <a routerLink="/" class="btn btn-outline-secondary">Back</a>
+      <button type="submit" class="btn btn-success" [disabled]="!registerForm.valid">
+        Register
+      </button>
+    </div>
+  </form>
+</div>

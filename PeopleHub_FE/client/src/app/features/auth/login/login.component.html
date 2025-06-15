@@ -1,0 +1,38 @@
+<div class="auth-form-container">
+  <h2 class="text-center mb-4">Log In to PeopleHub</h2>
+
+  <form #loginForm="ngForm" (ngSubmit)="onLogin()">
+    <div class="mb-3">
+      <label for="username" class="form-label">Username</label>
+      <input
+        type="text"
+        id="username"
+        name="username"
+        class="form-control"
+        required
+        [(ngModel)]="loginData.username"
+        placeholder="Enter your username"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        class="form-control"
+        required
+        [(ngModel)]="loginData.password"
+        placeholder="Enter your password"
+      />
+    </div>
+
+    <div class="d-flex justify-content-between mt-4">
+      <a routerLink="/" class="btn btn-outline-secondary">Back</a>
+      <button type="submit" class="btn btn-success" [disabled]="!loginForm.valid">
+        Log In
+      </button>
+    </div>
+  </form>
+</div>
