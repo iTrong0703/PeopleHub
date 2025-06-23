@@ -1,9 +1,8 @@
-﻿using MediatR;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using PeopleHub.Application.Features.Users.Commands.LoginUser;
 using PeopleHub.Application.Features.Users.Commands.RegisterUser;
-using PeopleHub.Application.Features.Users.DTOs;
+using PeopleHub.Application.Features.Users.Dtos.Requests;
+using PeopleHub.Application.Features.Users.Dtos.Responses;
 
 namespace PeopleHub.AppHost.Controllers
 {
@@ -13,16 +12,18 @@ namespace PeopleHub.AppHost.Controllers
         // Register an user
         // POST: {{localhost}}/api/account/register
         [HttpPost("register")]
-        public async Task<ActionResult<UserResponseDto>> Register([FromBody] RegisterUserCommand command)
+        public async Task<ActionResult<UserRegisterResponseDto>> Register([FromBody] UserRegisterRequestDto dto)
         {
+            var command = new RegisterUserCommand { RegisterRequest = dto };
             var result = await _mediator.Send(command);
             return Ok(result);
         }
         // Login an user
         // POST: {{localhost}}/api/account/login
         [HttpPost("login")]
-        public async Task<ActionResult<UserResponseDto>> Login([FromBody] LoginUserCommand command)
+        public async Task<ActionResult<UserLoginResponseDto>> Login([FromBody] UserLoginRequestDto dto)
         {
+            var command = new LoginUserCommand { LoginRequest = dto };
             var result = await _mediator.Send(command);
             return Ok(result);
         }

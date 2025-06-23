@@ -1,13 +1,8 @@
-﻿using FluentValidation.Results;
-using PeopleHub.Application.Features.Users.DTOs;
+﻿using PeopleHub.Application.Features.Users.Dtos.Responses;
 using PeopleHub.Application.Interfaces;
 using PeopleHub.Application.Interfaces.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace PeopleHub.Application.Features.Users.Commands.LoginUser
 {
@@ -23,15 +18,17 @@ namespace PeopleHub.Application.Features.Users.Commands.LoginUser
         }
         public async Task<UserLoginResponseDto> Handle(LoginUserCommand request, CancellationToken cancellationToken)
         {
-            var existingUser = await _unitOfWork.Users.FindByUsernameAsync(request.Username, cancellationToken);
+            var dto = request.LoginRequest;
+
+            var existingUser = await _unitOfWork.Users.FindByUsernameAsync(dto.Username, cancellationToken);
             if (existingUser == null)
             {
                 throw new UnauthorizedAccessException("Invalid username or password");
             }
 
+            // hash password
             using var hmac = new HMACSHA512(existingUser.PasswordSalt);
-
-            var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(request.Password));
+            var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(dto.Password));
 
             if (!CryptographicOperations.FixedTimeEquals(computedHash, existingUser.PasswordHash))
             {
@@ -39,8 +36,15 @@ namespace PeopleHub.Application.Features.Users.Commands.LoginUser
             }
 
             var token = _tokenService.CreateToken(existingUser);
+            var user = new UserLoginResponseDto
+            (
+                Username: existingUser.UserName,
+                FullName: existingUser.Profile.FullName,
+                PhotoUrl: existingUser.Profile.Photos.FirstOrDefault(x => x.IsMain)!.Url,
+                Token: token
+            );
 
-            return new UserLoginResponseDto(existingUser.UserName, token);
+            return user;
         }
     }
 }

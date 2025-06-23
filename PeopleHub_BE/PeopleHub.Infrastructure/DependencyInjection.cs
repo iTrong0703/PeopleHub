@@ -8,6 +8,7 @@ using PeopleHub.Application.Interfaces.Services;
 using PeopleHub.Infrastructure.Data;
 using PeopleHub.Infrastructure.Repositories;
 using PeopleHub.Infrastructure.Services.Authentication;
+using PeopleHub.Infrastructure.Services.Seed;
 using System.Text;
 
 namespace PeopleHub.Infrastructure
@@ -23,6 +24,7 @@ namespace PeopleHub.Infrastructure
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<ITokenService, TokenService>();
+            services.AddScoped<ISeedDataService, SeedDataService>();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {

@@ -1,7 +1,10 @@
-﻿using MediatR;
-using PeopleHub.Application.Features.Users.DTOs;
+﻿using PeopleHub.Application.Features.Users.Dtos.Requests;
+using PeopleHub.Application.Features.Users.Dtos.Responses;
 
 namespace PeopleHub.Application.Features.Users.Commands.RegisterUser
 {
-    public record RegisterUserCommand(string Username, string Password) : IRequest<UserRegisterResponseDto>;
+    public class RegisterUserCommand : IRequest<UserRegisterResponseDto>
+    {
+        public UserRegisterRequestDto RegisterRequest { get; init; } = default!;
+    }
 }

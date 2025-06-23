@@ -1,0 +1,182 @@
+[
+  {
+    "UserName": "emp1234",
+    "DateOfBirth": "2003-09-23",
+    "FullName": "Whitehead Lowe",
+    "Gender": "male",
+    "Email": "whiteheadlowe@tubalum.com",
+    "Position": "UX Designer",
+    "Department": null,
+    "Location": "Hanoi",
+    "Bio": "Sit laboris deserunt culpa consequat laboris nisi id sit.",
+    "LastActive": "2024-12-10T18:46:49-07:00",
+    "Photos": [
+      {
+        "Url": "https://randomuser.me/api/portraits/men/40.jpg",
+        "IsMain": true
+      }
+    ]
+  },
+  {
+    "UserName": "emp1302",
+    "DateOfBirth": "1996-11-27",
+    "FullName": "Fisher David",
+    "Gender": "male",
+    "Email": "fisherdavid@tubalum.com",
+    "Position": "UX Designer",
+    "Department": "Finance",
+    "Location": "Bangkok",
+    "Bio": "Minim dolore voluptate in aute enim ut sit consectetur aute nulla laboris do.",
+    "LastActive": "2023-03-13T04:40:55-07:00",
+    "Photos": [
+      {
+        "Url": "https://randomuser.me/api/portraits/men/21.jpg",
+        "IsMain": true
+      }
+    ]
+  },
+  {
+    "UserName": "emp6506",
+    "DateOfBirth": "1991-08-21",
+    "FullName": "Randall Wyatt",
+    "Gender": "male",
+    "Email": "randallwyatt@tubalum.com",
+    "Position": "UX Designer",
+    "Department": "Finance",
+    "Location": "Da Nang",
+    "Bio": "Esse duis proident ad eu.",
+    "LastActive": "2023-01-23T18:27:50-07:00",
+    "Photos": [
+      {
+        "Url": "https://randomuser.me/api/portraits/men/73.jpg",
+        "IsMain": true
+      }
+    ]
+  },
+  {
+    "UserName": "emp9345",
+    "DateOfBirth": "1992-12-19",
+    "FullName": "Brown Burch",
+    "Gender": "male",
+    "Email": "brownburch@tubalum.com",
+    "Position": null,
+    "Department": null,
+    "Location": "Singapore",
+    "Bio": "Excepteur nulla aliquip anim irure consectetur aliqua anim ea id laboris eiusmod aute reprehenderit reprehenderit.",
+    "LastActive": "2024-05-10T09:15:07-07:00",
+    "Photos": [
+      {
+        "Url": "https://randomuser.me/api/portraits/men/83.jpg",
+        "IsMain": true
+      }
+    ]
+  },
+  {
+    "UserName": "emp8071",
+    "DateOfBirth": "1976-08-12",
+    "FullName": "Cline Powell",
+    "Gender": "male",
+    "Email": "clinepowell@tubalum.com",
+    "Position": "Tester",
+    "Department": "Marketing",
+    "Location": "Singapore",
+    "Bio": "Do duis voluptate ad exercitation cupidatat eiusmod sunt fugiat laborum.",
+    "LastActive": "2023-03-08T15:41:48-07:00",
+    "Photos": [
+      {
+        "Url": "https://randomuser.me/api/portraits/men/12.jpg",
+        "IsMain": true
+      }
+    ]
+  },
+  {
+    "UserName": "emp4105",
+    "DateOfBirth": "1982-07-28",
+    "FullName": "Jana Velazquez",
+    "Gender": "female",
+    "Email": "janavelazquez@tubalum.com",
+    "Position": null,
+    "Department": "Marketing",
+    "Location": "Ho Chi Minh City",
+    "Bio": "Non pariatur irure adipisicing quis.",
+    "LastActive": "2025-01-10T03:53:12-07:00",
+    "Photos": [
+      {
+        "Url": "https://randomuser.me/api/portraits/women/67.jpg",
+        "IsMain": true
+      }
+    ]
+  },
+  {
+    "UserName": "emp3542",
+    "DateOfBirth": "1995-10-02",
+    "FullName": "Kristie Chen",
+    "Gender": "female",
+    "Email": "kristiechen@tubalum.com",
+    "Position": "Project Manager",
+    "Department": "Marketing",
+    "Location": "Ho Chi Minh City",
+    "Bio": "Consectetur adipisicing laborum aliquip ex elit et nostrud nulla dolor exercitation in magna tempor.",
+    "LastActive": "2025-02-03T16:16:19-07:00",
+    "Photos": [
+      {
+        "Url": "https://randomuser.me/api/portraits/women/56.jpg",
+        "IsMain": true
+      }
+    ]
+  },
+  {
+    "UserName": "emp1392",
+    "DateOfBirth": "1984-11-30",
+    "FullName": "Vicky Hall",
+    "Gender": "female",
+    "Email": "vickyhall@tubalum.com",
+    "Position": null,
+    "Department": "Finance",
+    "Location": "Ho Chi Minh City",
+    "Bio": "Ut reprehenderit laboris enim laborum consectetur ea ea enim sint commodo aliqua pariatur.",
+    "LastActive": "2025-05-27T02:43:27-07:00",
+    "Photos": [
+      {
+        "Url": "https://randomuser.me/api/portraits/women/89.jpg",
+        "IsMain": true
+      }
+    ]
+  },
+  {
+    "UserName": "emp5627",
+    "DateOfBirth": "1987-03-02",
+    "FullName": "Leticia Robles",
+    "Gender": "female",
+    "Email": "leticiarobles@tubalum.com",
+    "Position": null,
+    "Department": "Product",
+    "Location": null,
+    "Bio": "Cupidatat culpa qui sit laborum anim cupidatat irure sunt in sunt proident nisi ea.",
+    "LastActive": "2023-09-22T04:18:59-07:00",
+    "Photos": [
+      {
+        "Url": "https://randomuser.me/api/portraits/women/48.jpg",
+        "IsMain": true
+      }
+    ]
+  },
+  {
+    "UserName": "emp4377",
+    "DateOfBirth": "2001-05-26",
+    "FullName": "Eddie Mcmillan",
+    "Gender": "female",
+    "Email": "eddiemcmillan@tubalum.com",
+    "Position": "Tester",
+    "Department": "Marketing",
+    "Location": "Ho Chi Minh City",
+    "Bio": "Reprehenderit dolore est ad aliqua proident duis.",
+    "LastActive": "2023-09-24T09:41:36-07:00",
+    "Photos": [
+      {
+        "Url": "https://randomuser.me/api/portraits/women/37.jpg",
+        "IsMain": true
+      }
+    ]
+  }
+]

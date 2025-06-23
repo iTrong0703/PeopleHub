@@ -1,0 +1,41 @@
+.colleague-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+.colleague-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.08);
+}
+
+.colleague-card img.card-img-top {
+  height: 180px;
+  object-fit: cover;
+  object-position: center;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.view-profile-btn {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 2;
+}
+
+.colleague-card:hover .view-profile-btn {
+  opacity: 1;
+}
+
+.colleague-card:hover img {
+  transform: scale(1.2,1.2);
+  transition-duration: 500ms;
+  transition-timing-function: ease-out;
+}
+.colleague-card img {
+  transform: scale(1.0,1.0);
+  transition-duration: 500ms;
+  transition-timing-function: ease-out;
+}

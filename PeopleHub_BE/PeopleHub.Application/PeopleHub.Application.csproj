@@ -11,11 +11,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Common\Mappings\" />
     <Folder Include="Features\Users\Queries\GetUserById\" />
+    <Folder Include="Features\Users\Queries\GetUsers\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" />
     <PackageReference Include="MediatR" />
   </ItemGroup>

@@ -1,9 +1,9 @@
 ﻿using PeopleHub.Application.Common.Models;
-using PeopleHub.Application.Features.Users.DTOs;
+using PeopleHub.Application.Features.Colleagues.Dtos.Responses;
 
-namespace PeopleHub.Application.Features.Users.Queries.GetUsers
+namespace PeopleHub.Application.Features.Colleagues.Queries.GetColleagues
 {
-    public record GetUsersQuery : IRequest<PagedResult<UserResponseDto>>
+    public class GetColleaguesQuery : IRequest<PagedResult<ColleaguesResponseDto>>
     {
         public int PageNumber { get; init; } = 1;
         public int PageSize { get; init; } = 10;

@@ -1,0 +1,13 @@
+<div class="colleague-card card shadow-sm border rounded-2 h-100 bg-light-subtle text-dark">
+  <img src="{{colleague().avatarUrl}}" class="card-img-top" alt="Avatar"/>
+  <div class="card-body position-relative">
+    <h5 class="colleague-name">{{ colleague().fullName }}</h5>
+    <p class="colleague-position">Position: {{ colleague().position }}</p>
+    <p class="colleague-department">Department: {{ colleague().department }}</p>
+    <p class="colleague-location">Location: {{ colleague().location }}</p>
+    <a class="btn btn-sm btn-outline-primary view-profile-btn" routerLink="/test-errors">
+      View Profile
+    </a>
+  </div>
+</div>
+

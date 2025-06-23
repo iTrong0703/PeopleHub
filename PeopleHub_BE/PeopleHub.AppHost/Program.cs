@@ -1,5 +1,6 @@
 using PeopleHub.AppHost.Middlewares;
 using PeopleHub.Application;
+using PeopleHub.Application.Interfaces.Services;
 using PeopleHub.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -38,5 +39,19 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+using (var scope = app.Services.CreateScope())
+{
+    var seedService = scope.ServiceProvider.GetRequiredService<ISeedDataService>();
+    try
+    {
+        await seedService.SeedAsync();
+    }
+    catch (Exception ex)
+    {
+        var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "An error occurred while seeding the database.");
+    }
+}
 
 app.Run();

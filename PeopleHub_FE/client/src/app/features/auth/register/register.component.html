@@ -2,6 +2,7 @@
   <h2 class="text-center mb-4">Create a PeopleHub Account</h2>
 
   <form #registerForm="ngForm" (ngSubmit)="onRegister(registerForm)">
+    <!-- Username -->
     <div class="mb-3">
       <label for="username" class="form-label">Username</label>
       <input
@@ -12,9 +13,83 @@
         required
         [(ngModel)]="registerData.username"
         placeholder="Choose a username"
+        minlength="3"
+        maxlength="50"
       />
+      @if (hasError(registerForm, 'username', 'required')) {
+        <div class="text-danger">Username is required.</div>
+      }
+      @if (hasError(registerForm, 'username', 'minlength')) {
+        <div class="text-danger">Username must be at least 3 characters.</div>
+      }
+      @if (hasError(registerForm, 'username', 'maxlength')) {
+        <div class="text-danger">Username cannot exceed 60 characters long.</div>
+      }
     </div>
 
+    <!-- Email -->
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        class="form-control"
+        required
+        [(ngModel)]="registerData.email"
+        placeholder="Your email address"
+        email
+      />
+      @if (hasError(registerForm, 'email', 'required')) {
+        <div class="text-danger">Email is required.</div>
+      }
+      @if (hasError(registerForm, 'email', 'email')) {
+        <div class="text-danger">Invalid email format.</div>
+      }
+    </div>
+
+    <!-- Full Name -->
+    <div class="mb-3">
+      <label for="fullName" class="form-label">Full Name</label>
+      <input
+        type="text"
+        id="fullName"
+        name="fullName"
+        class="form-control"
+        required
+        [(ngModel)]="registerData.fullName"
+        placeholder="Your full name"
+        minlength="6"
+        maxlength="100"
+      />
+      @if (hasError(registerForm, 'fullName', 'required')) {
+        <div class="text-danger">Full name is required.</div>
+      }
+      @if (hasError(registerForm, 'fullName', 'minlength')) {
+        <div class="text-danger">Fullname must be at least 6 characters long.</div>
+      }
+      @if (hasError(registerForm, 'fullName', 'maxlength')) {
+        <div class="text-danger">Fullname cannot exceed 100 characters long.</div>
+      }
+    </div>
+
+    <!-- Date of Birth -->
+    <div class="mb-3">
+      <label for="dateOfBirth" class="form-label">Date of Birth</label>
+      <input
+        type="date"
+        id="dateOfBirth"
+        name="dateOfBirth"
+        class="form-control"
+        required
+        [(ngModel)]="registerData.dateOfBirth"
+      />
+      @if (hasError(registerForm, 'dateOfBirth', 'required')) {
+        <div class="text-danger">Date of birth is required.</div>
+      }
+    </div>
+
+    <!-- Password -->
     <div class="mb-3">
       <label for="password" class="form-label">Password</label>
       <input
@@ -33,8 +108,15 @@
           Passwords do not match.
         </div>
       }
+      @if (hasError(registerForm, 'password', 'required')) {
+        <div class="text-danger">Password is required.</div>
+      }
+      @if (hasError(registerForm, 'password', 'minlength')) {
+        <div class="text-danger">Password must be at least 6 characters long.</div>
+      }
     </div>
 
+    <!-- Confirm Password -->
     <div class="mb-3">
       <label for="confirmPassword" class="form-label">Confirm Password</label>
       <input
@@ -53,11 +135,19 @@
           Passwords do not match.
         </div>
       }
+      @if (passwordMismatch) {
+        <div class="text-danger">
+          Passwords do not match.
+        </div>
+      }
+      @if (hasError(registerForm, 'confirmPassword', 'required')) {
+        <div class="text-danger">Confirm Password is required.</div>
+      }
     </div>
 
     <div class="d-flex justify-content-between mt-4">
       <a routerLink="/" class="btn btn-outline-secondary">Back</a>
-      <button type="submit" class="btn btn-success" [disabled]="!registerForm.valid">
+      <button type="submit" class="btn btn-success" [disabled]="!registerForm.valid || passwordMismatch">
         Register
       </button>
     </div>

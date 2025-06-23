@@ -1,1 +1,38 @@
-<p>colleague-list works!</p>
+<div class="container py-0">
+  <h2 class="mb-4">Colleagues</h2>
+
+  <!-- Search & Filter -->
+  <!-- <div class="d-flex flex-wrap align-items-center mb-3 gap-2">
+    <input type="text" class="form-control me-2" placeholder="Search colleagues..." [(ngModel)]="searchTerm" (input)="onSearch()" />
+    <select class="form-select w-auto" [(ngModel)]="sortBy" (change)="onSortChange()">
+      <option value="fullName">Sort by Name</option>
+      <option value="position">Sort by Position</option>
+      <option value="department">Sort by Department</option>
+    </select>
+  </div> -->
+
+  <div class="row g-3">
+    @for (colleague of colleagues; track colleague.id) {
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <app-colleague-card [colleague]="colleague"></app-colleague-card>
+      </div>
+    }
+  </div>
+
+  <!-- Pagination -->
+  <!-- <div class="d-flex justify-content-center mt-4">
+    <nav>
+      <ul class="pagination pagination-sm mb-0">
+        <li class="page-item" [class.disabled]="pageNumber === 1">
+          <a class="page-link" (click)="goToPage(pageNumber - 1)">Previous</a>
+        </li>
+        <li class="page-item disabled">
+          <span class="page-link">{{ pageNumber }}</span>
+        </li>
+        <li class="page-item" [class.disabled]="!hasNextPage">
+          <a class="page-link" (click)="goToPage(pageNumber + 1)">Next</a>
+        </li>
+      </ul>
+    </nav>
+  </div> -->
+</div>

@@ -16,6 +16,7 @@ namespace PeopleHub.Application
                 options.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly());
                 options.AddBehavior(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
             });
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             return services;
         }
     }
